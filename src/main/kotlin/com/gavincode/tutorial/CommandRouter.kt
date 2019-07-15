@@ -1,8 +1,13 @@
 package com.gavincode.tutorial
 
+import javax.inject.Inject
+
 class CommandRouter {
 
     private val commands: MutableMap<String, Command> = mutableMapOf()
+
+    @Inject
+    constructor()
 
     fun route(input: String): Command.Status {
         val splintInput = split(input)
