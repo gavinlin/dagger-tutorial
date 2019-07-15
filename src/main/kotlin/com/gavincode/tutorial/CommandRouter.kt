@@ -8,26 +8,28 @@ class CommandRouter @Inject constructor(
     private val commands: Map<String, @JvmSuppressWildcards Command>
 ){
 
-    fun route(input: String): Command.Status {
+    fun route(input: String): Command.Result {
         val splintInput = split(input)
 
         val commandKey = splintInput[0]
 
         val command = commands[commandKey] ?: return invalidCommand(input)
 
-        val status = command.handleInput(splintInput.subList(1, splintInput.size))
-        if (status == Command.Status.INVALID) {
-            println("$commandKey: invalid arguments")
+        val result = command.handleInput(splintInput.subList(1, splintInput.size))
+
+        return if (result.status == Command.Status.INVALID) {
+            invalidCommand(input)
+        } else {
+            result
         }
-        return status
     }
 
     private fun split(string: String): List<String> {
         return string.split(" ")
     }
 
-    private fun invalidCommand(input: String): Command.Status {
+    private fun invalidCommand(input: String): Command.Result{
         println("couldn't understand \"$input\". please try again.")
-        return Command.Status.INVALID
+        return Command.Result.invalid()
     }
 }

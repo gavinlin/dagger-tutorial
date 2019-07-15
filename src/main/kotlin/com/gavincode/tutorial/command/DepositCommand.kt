@@ -10,15 +10,15 @@ class DepositCommand @Inject constructor(
     private val outputter: Outputter
 ): Command {
 
-    override fun handleInput(input: List<String>): Command.Status {
+    override fun handleInput(input: List<String>): Command.Result {
         if (input.size != 2) {
-            return Command.Status.INVALID
+            return Command.Result.invalid()
         }
 
         val account = database.getAccount(input[0])
         account.deposit(BigDecimal(input[1]))
         outputter.output(
             "${account.username} now has: ${account.balance}")
-        return Command.Status.HANDLED
+        return Command.Result.handled()
     }
 }
