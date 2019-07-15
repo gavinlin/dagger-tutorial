@@ -9,8 +9,8 @@ class CommandRouter {
     private val commands: MutableMap<String, Command> = mutableMapOf()
 
     @Inject
-    constructor(helloWorldCommand: HelloWorldCommand) {
-        commands.put(helloWorldCommand.key(), helloWorldCommand)
+    constructor(command: Command) {
+        commands.put(command.key(), command)
     }
 
     fun route(input: String): Command.Status {
