@@ -1,5 +1,7 @@
 package com.gavincode.tutorial
 
+import com.gavincode.tutorial.command.Command
+import com.gavincode.tutorial.command.HelloWorldCommand
 import javax.inject.Inject
 
 class CommandRouter {
@@ -7,7 +9,9 @@ class CommandRouter {
     private val commands: MutableMap<String, Command> = mutableMapOf()
 
     @Inject
-    constructor()
+    constructor(helloWorldCommand: HelloWorldCommand) {
+        commands.put(helloWorldCommand.key(), helloWorldCommand)
+    }
 
     fun route(input: String): Command.Status {
         val splintInput = split(input)

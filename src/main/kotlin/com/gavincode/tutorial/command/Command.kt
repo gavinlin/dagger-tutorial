@@ -1,4 +1,4 @@
-package com.gavincode.tutorial
+package com.gavincode.tutorial.command
 
 interface Command {
     fun key(): String
