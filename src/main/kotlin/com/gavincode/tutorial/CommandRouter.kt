@@ -4,21 +4,16 @@ import com.gavincode.tutorial.command.Command
 import com.gavincode.tutorial.command.HelloWorldCommand
 import javax.inject.Inject
 
-class CommandRouter {
-
-    private val commands: MutableMap<String, Command> = mutableMapOf()
-
-    @Inject
-    constructor(command: Command) {
-        commands.put(command.key(), command)
-    }
+class CommandRouter @Inject constructor(
+    private val commands: Map<String, @JvmSuppressWildcards Command>
+){
 
     fun route(input: String): Command.Status {
         val splintInput = split(input)
 
         val commandKey = splintInput[0]
 
-        val command = commands.get(commandKey) ?: return invalidCommand(input)
+        val command = commands[commandKey] ?: return invalidCommand(input)
 
         val status = command.handleInput(splintInput.subList(1, splintInput.size))
         if (status == Command.Status.INVALID) {
