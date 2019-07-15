@@ -7,8 +7,6 @@ class HelloWorldCommand @Inject constructor(
     private val outputter: Outputter
 ): Command {
 
-    override fun key(): String = "hello"
-
     override fun handleInput(input: List<String>): Command.Status {
         if (input.isNotEmpty()) {
             return Command.Status.INVALID

@@ -1,7 +1,6 @@
 package com.gavincode.tutorial.command
 
 interface Command {
-    fun key(): String
 
     fun handleInput(input: List<String>): Status
 

@@ -1,15 +1,18 @@
 package com.gavincode.tutorial.command
 
+import com.gavincode.tutorial.Database
 import com.gavincode.tutorial.Outputter
 import javax.inject.Inject
 
 class LoginCommand @Inject constructor(
-    protected val outputter: Outputter
+    private val outputter: Outputter,
+    private val database: Database
 ) : SingleArgCommand() {
-    override fun key(): String = "login"
 
     override fun handleArg(username: String): Command.Status {
-        outputter.output("$username is logged in.")
+        val account = database.getAccount(username)
+        outputter.output(
+            "${account.username} is logged in with balance: ${account.balance}")
         return Command.Status.HANDLED
     }
 
