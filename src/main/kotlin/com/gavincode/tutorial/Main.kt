@@ -1,5 +1,12 @@
 package com.gavincode.tutorial
 
-fun main(args: Array<String>) {
+import java.util.*
 
+fun main(args: Array<String>) {
+    val scanner = Scanner(System.`in`)
+    val commandRouter = CommandRouter()
+
+    while (scanner.hasNextLine()) {
+        commandRouter.route(scanner.nextLine())
+    }
 }
