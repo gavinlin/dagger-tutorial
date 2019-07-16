@@ -1,10 +1,12 @@
 package com.gavincode.tutorial
 
+import com.gavincode.tutorial.di.PerSession
 import com.gavincode.tutorial.di.UserCommandsModule
 import dagger.BindsInstance
 import dagger.Module
 import dagger.Subcomponent
 
+@PerSession
 @Subcomponent(modules = [UserCommandsModule::class])
 interface UserCommandsRouter  {
     fun router(): CommandRouter
