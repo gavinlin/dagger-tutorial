@@ -2,6 +2,7 @@ package com.gavincode.tutorial.di
 
 import com.gavincode.tutorial.command.Command
 import com.gavincode.tutorial.command.DepositCommand
+import com.gavincode.tutorial.command.WithdrawCommand
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -13,4 +14,9 @@ abstract class UserCommandsModule {
     @IntoMap
     @StringKey("deposit")
     abstract fun depositCommand(command: DepositCommand): Command
+
+    @Binds
+    @IntoMap
+    @StringKey("withdraw")
+    abstract fun withdrawCommand(command: WithdrawCommand): Command
 }
