@@ -1,8 +1,6 @@
 package com.gavincode.tutorial
 
 import com.gavincode.tutorial.di.DaggerCommandProcessorFactory
-import com.gavincode.tutorial.di.DaggerCommandRouterFactory
-import dagger.Component
 import java.util.*
 
 fun main(args: Array<String>) {

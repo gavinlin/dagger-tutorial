@@ -16,5 +16,5 @@ interface UserCommandsRouter  {
     }
 
     @Module(subcomponents = [UserCommandsRouter::class])
-    interface InstallationModule
+    interface InstallationModule {}
 }
