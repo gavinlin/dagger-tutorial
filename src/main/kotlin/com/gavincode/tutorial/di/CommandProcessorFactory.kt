@@ -8,11 +8,9 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [
-    LoginCommandModule::class,
-    HelloWorldModule::class,
+    CommandsModule::class,
     SystemOutModule::class,
-    UserCommandsRouter.InstallationModule::class,
-    AmountsModule::class])
+    UserCommandsRouter.InstallationModule::class])
 interface CommandProcessorFactory{
     fun processor(): CommandProcessor
 }
